@@ -1,0 +1,953 @@
+/* ==================== VARIÁVEIS GLOBAIS ==================== */
+:root {
+  --primary: #ff4081;
+  --primary-dark: #e91e63;
+  --primary-darker: #c2185b;
+  --white: #ffffff;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #333333;
+  --text-light: #f8f8f8;
+  --text-dark: #333333;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --border-radius: 12px;
+  --focus-border: 3px solid rgba(255, 64, 129, 0.5);
+  
+  /* Cores específicas para botões */
+  --whatsapp: #25D366;
+  --telegram: #0088CC;
+  --beacons: #00A6FB;
+  --site: #6e48aa;
+  --instagram: #E1306C;
+  --youtube: #FF0000;
+  --twitter: #1DA1F2;
+  --discord: #7289DA;
+  
+  /* Rosa para efeitos de blur */
+  --rosa-blur: rgba(255, 182, 193, 0.5);
+}
+
+/* ==================== ANIMAÇÕES DE ENTRADA ==================== */
+/* Animação para desktop - entrada espetacular */
+@media (min-width: 1024px) {
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100px) rotate(-5deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) rotate(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100px) rotate(5deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) rotate(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes floatIn {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Aplicando as animações */
+  .link-button:nth-child(odd) {
+    animation: slideInFromLeft 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+  }
+
+  .link-button:nth-child(even) {
+    animation: slideInFromRight 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+  }
+
+  .package-item:nth-child(1) {
+    animation: floatIn 0.8s ease-out both;
+  }
+
+  .package-item:nth-child(2) {
+    animation: floatIn 0.8s ease-out 0.2s both;
+  }
+
+  .package-item:nth-child(3) {
+    animation: floatIn 0.8s ease-out 0.4s both;
+  }
+
+  /* Delay para os botões */
+  .link-button:nth-child(1) { animation-delay: 0.1s; }
+  .link-button:nth-child(2) { animation-delay: 0.3s; }
+  .link-button:nth-child(3) { animation-delay: 0.5s; }
+  .link-button:nth-child(4) { animation-delay: 0.7s; }
+}
+
+/* ==================== EFEITO BLUR ROSA INTENSIFICADO ==================== */
+.profile-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-frame::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    var(--rosa-blur) 0%,
+    transparent 70%
+  );
+  filter: blur(15px); /* Aumentei o blur para 15px */
+  opacity: 0.7;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  transition: all 0.5s ease;
+}
+
+.profile-frame:hover::after {
+  filter: blur(20px); /* Efeito mais intenso no hover */
+  opacity: 0.9;
+}
+
+/* ==================== ANIMAÇÃO 3D DA FOTO DE PERFIL APRIMORADA ==================== */
+.profile-frame {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+}
+
+.profile-photo {
+  transform: translateZ(0);
+  transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 1.5s ease;
+  backface-visibility: hidden;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateY(0);
+  }
+  50% {
+    transform: translateY(-20px) rotateY(10deg);
+  }
+}
+
+/* Efeito 3D com mouse tracking (apenas desktop) */
+@media (min-width: 1024px) {
+  .profile-frame {
+    transition: transform 0.5s ease-out;
+  }
+
+  body:hover .profile-frame {
+    transform: 
+      rotateX(var(--mouse-y, 0deg)) 
+      rotateY(var(--mouse-x, 0deg)) 
+      translateZ(20px);
+  }
+}
+
+/* ==================== ANIMAÇÕES DE BOTÕES AVANÇADAS ==================== */
+.link-button {
+  transform-origin: left center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 1024px) {
+  .link-button:hover {
+    transform: 
+      translateY(-5px) 
+      rotateY(5deg) 
+      scale(1.02);
+    box-shadow: 
+      0 15px 30px rgba(0, 0, 0, 0.2),
+      5px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Efeito de profundidade 3D */
+.link-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  border-radius: var(--border-radius);
+  transform: translateZ(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.link-button:hover::before {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+/* ==================== ANIMAÇÕES ESPECIAIS PARA PACOTES ==================== */
+.package-item {
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 1024px) {
+  .package-item:hover {
+    transform: 
+      translateY(-10px) 
+      rotateX(5deg) 
+      rotateY(-5deg);
+  }
+  
+  .package-image {
+    transition: transform 1s ease, filter 0.5s ease;
+    transform: translateZ(20px);
+  }
+  
+  .package-item:hover .package-image {
+    transform: 
+      translateZ(30px) 
+      scale(1.05);
+    filter: brightness(1.1);
+  }
+}
+
+/* ==================== EFEITO PARALLAX PARA DESKTOP ==================== */
+@media (min-width: 1024px) {
+  .header-container {
+    overflow: hidden;
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .cover-photo {
+    background-attachment: fixed;
+    background-size: cover;
+    height: 120%;
+    transform: translateZ(0);
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
+}
+
+/* ==================== ANIMAÇÃO DE TEXTO FLUOREScente ==================== */
+.title-overlay {
+  position: relative;
+  display: inline-block;
+}
+
+@media (min-width: 1024px) {
+  .title-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+  }
+  
+  .title-overlay:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ==================== EFEITO DE NEON PARA BOTÕES ==================== */
+@media (min-width: 1024px) {
+  .package-button {
+    box-shadow: 
+      0 0 10px rgba(255, 64, 129, 0.5),
+      0 0 20px rgba(255, 64, 129, 0.3);
+    transition: 
+      box-shadow 0.5s ease,
+      transform 0.3s ease;
+  }
+  
+  .package-button:hover {
+    box-shadow: 
+      0 0 20px rgba(255, 64, 129, 0.8),
+      0 0 30px rgba(255, 64, 129, 0.5),
+      0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==================== DEGRADÊ ROSA INTENSIFICADO ==================== */
+.package-image-container::before {
+  height: 60px; /* Aumentei a altura do degradê */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 182, 193, 0.9) 0%,
+    rgba(255, 182, 193, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(5px); /* Adicionei um blur suave */
+}
+
+/* ==================== ANIMAÇÃO DE PARTÍCULAS (DESKTOP) ==================== */
+@media (min-width: 1024px) {
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, var(--rosa-blur) 0%, transparent 20%),
+      radial-gradient(circle at 80% 70%, var(--rosa-blur) 0%, transparent 20%);
+    z-index: -1;
+    opacity: 0.3;
+    animation: particles 20s infinite alternate;
+  }
+  
+  @keyframes particles {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
+  }
+}
+
+/* ==================== ESTILOS BASE (MANTIDOS) ==================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ... (mantenha o restante do seu CSS original aqui) ... */
+
+/* ==================== RESPONSIVIDADE ==================== */
+@media (max-width: 1023px) {
+  /* Desativa animações complexas em dispositivos móveis */
+  .link-button,
+  .package-item,
+  .profile-frame {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Efeitos mais simples para mobile */
+  .link-button:active {
+    transform: scale(0.98) !important;
+  }
+  
+  .profile-frame::after {
+    filter: blur(10px); /* Blur mais suave em mobile */
+  }
+}
+
+
+
+    /* ESTILOS GERAIS */
+    :root {
+      --rosa-principal: #ffb6c1;
+      --rosa-claro: rgba(255, 182, 193, 0.15);
+      --rosa-degrade: linear-gradient(to bottom, rgba(255, 182, 193, 0.35) 0%, rgba(255, 182, 193, 0) 100%);
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --tamanho-base: 1rem;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Tipografia responsiva */
+    }
+    
+    /* HEADER - MELHORIAS PARA RESPONSIVIDADE */
+    .header-container {
+      position: relative;
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-top: 1.5rem;
+      min-height: 35vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    
+    .cover-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      background-color: var(--rosa-claro);
+      background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    }
+    
+    .profile-container {
+      position: relative;
+      max-width: min(90%, 600px);
+      margin: 0 auto;
+      padding: 2rem 0 1rem;
+    }
+    
+    .profile-frame {
+      width: clamp(120px, 18vw, 200px);
+      height: clamp(120px, 18vw, 200px);
+      border-radius: 50%;
+      border: 4px solid white;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .profile-frame:hover {
+      transform: rotateY(15deg) scale(1.05);
+    }
+    
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .profile-frame:hover .profile-photo {
+      transform: scale(1.1);
+    }
+    
+    .title-overlay {
+      position: relative;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 2;
+      margin-top: 1.5rem;
+    }
+    
+    .profile-info {
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.8rem;
+      border-radius: 15px;
+      max-width: 80%;
+      margin: 1rem auto 0;
+    }
+    
+    .profile-info:hover {
+      transform: translateY(-3px);
+    }
+    
+    .profile-name {
+      font-weight: 600;
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+    }
+    
+    .profile-description {
+      color: #777;
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+    }
+    
+    /* BOTÕES DE LINKS - MELHORIAS PARA RESPONSIVIDADE */
+    .links-section {
+      max-width: min(90%, 800px);
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+    
+    .links-container {
+      display: grid;
+      gap: 1.2rem;
+    }
+    
+    .link-button {
+      display: flex;
+      align-items: center;
+      padding: clamp(0.8rem, 1.8vw, 1.2rem);
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .link-button:active {
+      transform: translateY(0);
+    }
+    
+    .link-button.whatsapp {
+      background-color: #25D366;
+    }
+    
+    .link-button.telegram {
+      background-color: #0088cc;
+    }
+    
+    .link-button.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    
+    .icon {
+      width: clamp(40px, 8vw, 60px);
+      height: clamp(40px, 8vw, 60px);
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .link-button:hover .icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+    
+    .icon i {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+    
+    .text {
+      text-align: left;
+      flex-grow: 1;
+    }
+    
+    .text .title {
+      font-weight: 600;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+    }
+    
+    .text .description {
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      opacity: 0.9;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    
+    /* DIVISOR */
+    .divider-line {
+      border: none;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
+      max-width: min(90%, 600px);
+    }
+    
+    /* PACOTES - MELHORIAS PARA RESPONSIVIDADE */
+    .packages-section {
+      max-width: min(95%, 1200px);
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 2rem;
+      color: #333;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: clamp(50px, 8vw, 70px);
+      height: 4px;
+      background: var(--rosa-principal);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+    
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 2rem;
+      place-items: center;
+    }
+    
+    .package-item {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    .package-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* ESTILO PARA O DEGRADÊ ROSA NAS IMAGENS */
+    .package-image-container {
+      position: relative;
+      height: clamp(180px, 25vw, 250px);
+      overflow: hidden;
+    }
+    
+    .package-image-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: var(--rosa-degrade);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .package-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .package-item:hover .package-image {
+      transform: scale(1.05);
+    }
+    
+    .package-header {
+      padding: 1rem 1.5rem 0;
+    }
+    
+    .package-title {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      color: #333;
+    }
+    
+    .package-content {
+      padding: 1rem 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .package-features {
+      list-style-type: none;
+    }
+    
+    .package-features li {
+      padding: 0.4rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+      transition: all 0.3s ease;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+    
+    .package-features li:hover {
+      transform: translateX(5px);
+      color: #ff4081;
+    }
+    
+    .package-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--rosa-principal);
+      font-weight: bold;
+    }
+    
+    .package-footer {
+      padding: 1rem 1.5rem;
+      background-color: #f9f9f9;
+      border-top: 1px solid #eee;
+    }
+    
+    .package-price {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: #ff4081;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+    
+    .package-button {
+      display: block;
+      background-color: #ff4081;
+      color: white;
+      text-align: center;
+      padding: clamp(0.7rem, 1.5vw, 1rem);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+    
+    .package-button:hover {
+      background-color: #e91e63;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .package-button:active {
+      transform: translateY(0);
+    }
+    
+    .payment-method {
+      display: block;
+      font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+      font-weight: 400;
+      margin-top: 0.3rem;
+    }
+    
+    .package-details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #ddd;
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      color: #666;
+    }
+    
+    .package-details p {
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    
+    .package-details p::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--rosa-principal);
+    }
+    
+    /* FOOTER */
+    .footer-container {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f0f0f0;
+      color: #666;
+    }
+    
+    .footer-text {
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-disclaimer {
+      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+    }
+    
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+        max-width: min(95%, 500px);
+        margin: 0 auto;
+      }
+      
+      .profile-container {
+        padding-top: 1rem;
+      }
+      
+      .title-overlay {
+        margin-top: 1rem;
+      }
+      
+      .cover-photo {
+        background-position: top center;
+      }
+    }
+    
+    /* TELAS GRANDES - ACIMA DE 1024PX */
+    @media (min-width: 1024px) {
+      .header-container {
+        min-height: 40vh;
+      }
+      
+      .profile-container {
+        padding-top: 3rem;
+      }
+      
+      .links-container {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+      
+      .package-item {
+        max-width: 100%;
+      }
+    }
+    
+    /* TELAS MUITO GRANDES - ACIMA DE 1600PX */
+    @media (min-width: 1600px) {
+      :root {
+        --tamanho-base: 1.2rem;
+      }
+      
+      body {
+        font-size: 1.1rem;
+      }
+      
+      .header-container {
+        min-height: 45vh;
+      }
+      
+      .profile-frame {
+        width: 220px;
+        height: 220px;
+      }
+      
+      .title-overlay {
+        font-size: 3rem;
+      }
+      
+      .profile-name {
+        font-size: 1.6rem;
+      }
+      
+      .profile-description {
+        font-size: 1.2rem;
+      }
+      
+      .link-button {
+        padding: 1.5rem 2rem;
+      }
+      
+      .icon {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .icon i {
+        font-size: 2.2rem;
+      }
+      
+      .text .title {
+        font-size: 1.6rem;
+      }
+      
+      .text .description {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .package-image-container {
+        height: 300px;
+      }
+      
+      .package-title {
+        font-size: 2rem;
+      }
+      
+      .package-features li {
+        font-size: 1.1rem;
+      }
+      
+      .package-price {
+        font-size: 2.5rem;
+      }
+      
+      .package-button {
+        font-size: 1.3rem;
+        padding: 1.2rem;
+      }
+    }
+    
+    /* ANIMAÇÕES */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .header-container, .links-section, .packages-section, .footer-container {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .links-section { animation-delay: 0.2s; }
+    .packages-section { animation-delay: 0.4s; }
+    .footer-container { animation-delay: 0.6s; }
+    
+    .profile-frame {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .package-button {
+      animation: pulse 2s infinite;
+    }

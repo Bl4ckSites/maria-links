@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <title>Maria - Links Exclusivos</title>
+  <meta name="description" content="Acesse todos os links da Maria em um só lugar - WhatsApp, Telegram, Instagram e muito mais!">
+  
+  <!-- Favicon e Ícones -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#ff4081">
+
+ <!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Links Maria">
+<meta property="og:title" content="Maria - Links Exclusivos">
+<meta property="og:description" content="Acesse todos os links da Maria em um só lugar">
+<meta property="og:url" content="https://seusite.com/">
+<meta property="og:image" content="https://dl.dropboxusercontent.com/scl/fi/cu3iwv2wazmidoon72y02/Imagem-do-WhatsApp-de-2025-06-17-s-13.32.21_9c83dbfc.jpg?rlkey=tsyd5sphnmn48u7hi2yfrii53&st=hsy8bd2s">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maria - Links Exclusivos">
+<meta name="twitter:description" content="Acesse todos os links da Maria em um só lugar">
+<meta name="twitter:image" content="https://dl.dropboxusercontent.com/scl/fi/cu3iwv2wazmidoon72y02/Imagem-do-WhatsApp-de-2025-06-17-s-13.32.21_9c83dbfc.jpg?rlkey=tsyd5sphnmn48u7hi2yfrii53&st=hsy8bd2s">
+<meta name="twitter:image:alt" content="Foto de perfil da Maria">
+  <!-- Pré-carregamentos -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+  <link rel="preload" href="profile.png" as="image">
+  <link rel="preload" href="preview1.jpg" as="image">
+  <link rel="preload" href="preview2.jpg" as="image">
+
+  <!-- Fontes e Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles1.css">
+  
+  <style>
+    /* ESTILOS GERAIS */
+    :root {
+      --rosa-principal: #ffb6c1;
+      --rosa-claro: rgba(255, 182, 193, 0.15);
+      --rosa-degrade: linear-gradient(to bottom, rgba(255, 182, 193, 0.35) 0%, rgba(255, 182, 193, 0) 100%);
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* HEADER */
+    .header-container {
+      position: relative;
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-top: 1.5rem;
+    }
+    
+    .cover-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      background-color: var(--rosa-claro);
+    }
+    
+    .profile-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 80px;
+    }
+    
+    .profile-frame {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+    
+    .profile-frame:hover {
+      transform: rotateY(15deg) scale(1.05);
+    }
+    
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .profile-frame:hover .profile-photo {
+      transform: scale(1.1);
+    }
+    
+    .title-overlay {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 2;
+      margin-top: 50px;
+    }
+    
+    .profile-info {
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .profile-info:hover {
+      transform: translateY(-3px);
+    }
+    
+    .profile-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    
+    .profile-description {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    /* BOTÕES DE LINKS */
+    .links-section {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+    
+    .links-container {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .link-button {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .link-button:active {
+      transform: translateY(0);
+    }
+    
+    .link-button.whatsapp {
+      background-color: #25D366;
+    }
+    
+    .link-button.telegram {
+      background-color: #0088cc;
+    }
+    
+    .link-button.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    
+    .icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .link-button:hover .icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+    
+    .icon i {
+      font-size: 1.5rem;
+    }
+    
+    .text {
+      text-align: left;
+      flex-grow: 1;
+    }
+    
+    .text .title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .text .description {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    
+    /* DIVISOR */
+    .divider-line {
+      border: none;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+      margin: 2rem auto;
+      max-width: 600px;
+    }
+    
+    /* PACOTES */
+    .packages-section {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #333;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--rosa-principal);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+    
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .package-item {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .package-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* ESTILO PARA O DEGRADÊ ROSA NAS IMAGENS */
+    .package-image-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .package-image-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px; /* Altura do degradê */
+      background: var(--rosa-degrade);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .package-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .package-item:hover .package-image {
+      transform: scale(1.05);
+    }
+    
+    .package-header {
+      padding: 1rem 1.5rem 0;
+    }
+    
+    .package-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+    }
+    
+    .package-content {
+      padding: 1rem 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .package-features {
+      list-style-type: none;
+    }
+    
+    .package-features li {
+      padding: 0.4rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .package-features li:hover {
+      transform: translateX(5px);
+      color: #ff4081;
+    }
+    
+    .package-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--rosa-principal);
+      font-weight: bold;
+    }
+    
+    .package-footer {
+      padding: 1rem 1.5rem;
+      background-color: #f9f9f9;
+      border-top: 1px solid #eee;
+    }
+    
+    .package-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff4081;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+    
+    .package-button {
+      display: block;
+      background-color: #ff4081;
+      color: white;
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .package-button:hover {
+      background-color: #e91e63;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .package-button:active {
+      transform: translateY(0);
+    }
+    
+    .payment-method {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      margin-top: 0.3rem;
+    }
+    
+    .package-details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #ddd;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    .package-details p {
+      margin-bottom: 0.3rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    
+    .package-details p::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--rosa-principal);
+    }
+    
+    /* FOOTER */
+    .footer-container {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #f0f0f0;
+      color: #666;
+    }
+    
+    .footer-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-disclaimer {
+      font-size: 0.8rem;
+    }
+    
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      .profile-frame {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .title-overlay {
+        font-size: 1.5rem;
+        margin-top: 40px;
+      }
+    }
+    
+    /* ANIMAÇÕES */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .header-container, .links-section, .packages-section, .footer-container {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .links-section { animation-delay: 0.2s; }
+    .packages-section { animation-delay: 0.4s; }
+    .footer-container { animation-delay: 0.6s; }
+    
+    .profile-frame {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .package-button {
+      animation: pulse 2s infinite;
+    }
+  </style>
+  
+  <!-- Segurança -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+</head>
+<body>
+  <header class="header-container" role="banner">
+  <div class="cover-photo" aria-hidden="true" style="background-image: url('cover-image.jpg');"></div>
+  <div class="profile-container">
+    <div class="profile-frame">
+      <img src="profile.png" 
+           alt="Foto de perfil da Maria" 
+           class="profile-photo"
+           loading="eager"
+           decoding="async">
+    </div>
+    <h1 class="title-overlay"></h1>
+    <div class="profile-info">
+      <p class="profile-name">Maria</p>
+      <p class="profile-description"></p>
+    </div>
+    </h1 >Conteúdo exclusivo 🔞</h1>
+  </div>
+</header>
+  
+  <main class="main-content" role="main">
+    <section class="links-section" aria-labelledby="links-title">
+      <h2 id="links-title" class="visually-hidden">Links Principais</h2>
+      <div class="links-container">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5511989399913?text=Oi%20marizinha%2C%20quero%20comprar%20seus%20conteudinhos" 
+           class="link-button whatsapp" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Compre conteúdo pelo WhatsApp">
+          <div class="icon">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          </div>
+          <div class="text">
+            <div class="title">WhatsApp🔞</div>
+            <div class="description">Compre conteúdo comigo!</div>
+          </div>
+          <span class="sr-only">Abrirá em nova aba</span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/+eBipioTaAfphNjZh" 
+           class="link-button telegram" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Compre conteúdo pelo Telegram">
+          <div class="icon">
+            <i class="fab fa-telegram" aria-hidden="true"></i>
+          </div>
+          <div class="text">
+            <div class="title">Previas🔞</div>
+            <div class="description">Só um gostinho!</div>
+          </div>
+          <span class="sr-only">Abrirá em nova aba</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/m.maria_zr?igsh=MTJweXZucDJ2aWV0NQ==" 
+           class="link-button instagram" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Me siga no Instagram">
+          <div class="icon">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </div>
+          <div class="text">
+            <div class="title">Instagram</div>
+            <div class="description">@m.maria_zr</div>
+          </div>
+          <span class="sr-only">Abrirá em nova aba</span>
+        </a>
+      </div>
+    </section>
+    
+    <hr class="divider-line" aria-hidden="true">
+
+    <section class="packages-section" aria-labelledby="packages-title">
+      <h2 id="packages-title" class="section-title">Pacotes Exclusivos</h2>
+      
+      <div class="packages-grid">
+        <!-- Pacote Simples -->
+        <article class="package-item" id="simples">
+          <div class="package-image-container">
+            <img src="images/simples-preview.jpg" 
+                 alt="Prévia do pacote Simples" 
+                 class="package-image"
+                 loading="lazy">
+          </div>
+          <div class="package-header">
+            <h3 class="package-title">NIFETA</h3>
+          </div>
+          <div class="package-content">
+            <ul class="package-features">
+              <li>10 mídias</li>
+              <li> Conteúdo Explícito</li>
+              <li> Conteudos exclusivos</li>             
+              <li> Privacidade garantida na compra!</li>
+            </ul>
+          </div>
+          <div class="package-footer">
+            <div class="package-price">R$ 15,00</div>
+            <a href="https://wa.me/5511989399913?text=Ol%C3%A1%2C%20me%20interessei%20pelo%20pack%20Nifeta%21%21" 
+               class="package-button" 
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Comprar pacote Simples">
+              COMPRAR AGORA
+              <span class="payment-method">NO PIX</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Pacote Médio -->
+        <article class="package-item" id="medio">
+          <div class="package-image-container">
+            <img src="images/medio-preview.jpg" 
+                 alt="Prévia do pacote Médio" 
+                 class="package-image"
+                 loading="lazy">
+          </div>
+          <div class="package-header">
+            <h3 class="package-title">SAFADA</h3>
+          </div>
+          <div class="package-content">
+            <ul class="package-features">
+              <li> 23 mídias</li>
+              <li> Conteúdo Explícito</li>
+              <li> Conteudos exclusivos</li>              
+              <li> Privacidade garantida na compra!</li>
+            </ul>
+          </div>
+          <div class="package-footer">
+            <div class="package-price">R$ 24,99</div>
+            <a href="https://wa.me/5511989399913?text=Ol%C3%A1%2C%20me%20interessei%20pelo%20pack%20Safada%21%21" 
+               class="package-button" 
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Comprar pacote Médio">
+              COMPRAR AGORA
+              <span class="payment-method">NO PIX</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Pacote Premium -->
+        <article class="package-item" id="premium">
+          <div class="package-image-container">
+            <img src="images/premium-preview.jpg" 
+                 alt="Prévia do pacote Premium" 
+                 class="package-image"
+                 loading="lazy">
+          </div>
+          <div class="package-header">
+            <h3 class="package-title">PREMIUM</h3>
+          </div>
+          <div class="package-content">
+            <ul class="package-features">
+              <li> Mais de 50 mídias</li>
+              <li> Conteúdo Explícito</li>
+              <li> Conteudos exclusivos</li>             
+              <li> Privacidade garantida na compra!</li>
+            </ul>
+          </div>
+          <div class="package-footer">
+            <div class="package-price">R$ 60,00</div>
+            <a href="https://wa.me/5511989399913?text=Ol%C3%A1%2C%20me%20interessei%20pelo%20pack%20Premium%21%21" 
+               class="package-button" 
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Comprar pacote Premium">
+              COMPRAR AGORA
+              <span class="payment-method">NO PIX</span>
+            </a>
+            <div class="package-details">
+              <p>Liberação de acesso imediata</p>
+              <p>100% Seguro e livre de vírus</p>
+              <p>Compatível com smartphone</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer-container" role="contentinfo">
+      <p class="footer-text">© 2025 Rogba - Todos os direitos reservados</p>
+      <p class="footer-disclaimer">Conteúdo exclusivo para maiores de 18 anos</p>
+    </footer>  
+  </main>
+
+  <!-- Scripts externos -->
+  <script src="javascript.js" defer></script>
+  <script src="js_inter.js" defer></script>
+  <script src="ani.js" defer></script>
+  <script src="segu.js" defer></script>
+  <script type="module" defer src="ux_utils.js"></script>
+      <script>
+  </script>
+</body>
+</html>
